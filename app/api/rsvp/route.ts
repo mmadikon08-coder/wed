@@ -70,7 +70,10 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('Error submitting RSVP:', error)
     return NextResponse.json(
-      { error: 'Failed to submit RSVP' },
+      { 
+        error: 'Failed to submit RSVP',
+        details: error.message || String(error) // ЭТА СТРОКА ПОКАЖЕТ НАСТОЯЩУЮ ОШИБКУ
+      },
       { status: 500 }
     )
   }
